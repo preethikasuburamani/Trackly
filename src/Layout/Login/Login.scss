@@ -1,0 +1,59 @@
+.auth-page {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-bg {
+  background:  #0F172A;
+}
+
+.register-bg {
+  background:  #0F172A;
+}
+
+.auth-card {
+  width: 400px;
+  background: white;
+  padding: 40px;
+  border-radius: 16px;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.form-group label {
+  font-weight: 600;
+}
+
+.input-wrapper {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 10px;
+  margin:10px;
+}
+
+.input-wrapper input {
+  border: none;
+  outline: none;
+  flex: 1;
+}
+
+.icon {
+  margin-right: 8px;
+  color: gray;
+}
+
+.btn {
+  padding: 10px;
+  background: rgb(225, 142, 225);;
+  color: #0F172A;
+  border-radius: 10px;
+  cursor: pointer;
+}
