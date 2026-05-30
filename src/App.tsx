@@ -1,5 +1,5 @@
 import "./App.css";
-import Header from "./Layout/Header";
+import Header from "./Layout/Header/Header";
 
 import Home from "./Layout/Home";
 import Login from "./Layout/Login/Login";
@@ -10,12 +10,16 @@ function App() {
   return (
     <Router>
       <section className="app-container">
-      <Header/>
-        <Routes>
-          <Route path="/" element={<Home/>} />        
-          <Route path="/Login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-        </Routes>
+        
+        <div> <Header/></div>
+     
+        <div>
+          <Routes>
+            <Route path="/" element={<Home/>} />        
+            <Route path="/Login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+          </Routes>
+        </div>
 
       </section> 
     </Router>

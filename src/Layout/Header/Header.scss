@@ -1,0 +1,22 @@
+.header-container{
+    background-color: #020d26;
+    color: rgb(225, 142, 225);
+    .logo{
+       padding:40px;
+       color:white;
+    }
+    .nav-links{
+       
+        .list{
+            list-style: none;
+            font-size: 25px;
+            padding: 20px;
+            &:hover{
+                color: white;
+            }
+        }
+    }
+    .profile{
+        padding:100px 0 10px 20px;
+    }
+}
