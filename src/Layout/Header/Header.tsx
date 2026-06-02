@@ -30,7 +30,7 @@ const Header = () => {
             <nav>
                 <ul>
                     <li onClick={() => navigate('/')} className="list"> <IoHome />   Dashboard</li>
-                    <li onClick={() => navigate('/')} className="list"> <MdPlaylistAddCircle />  Applications</li>
+                    <li onClick={() => navigate('/application')} className="list"> <MdPlaylistAddCircle />  Applications</li>
                     <li onClick={() => navigate('/')} className="list"> <FaCalendarDay /> Calendar</li>
                     <li onClick={() => navigate('/')} className="list"> <FaStar /> Saved Jobs</li>
                     <li onClick={() => navigate('/')} className="list"> <IoSettingsSharp /> Settings</li>

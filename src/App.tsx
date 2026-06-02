@@ -1,4 +1,5 @@
 import "./App.css";
+import ApplicationsPage from "./Layout/ApplicationsPage";
 import Header from "./Layout/Header/Header";
 
 import Home from "./Layout/Home";
@@ -18,6 +19,7 @@ function App() {
             <Route path="/" element={<Home/>} />        
             <Route path="/Login" element={<Login />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/application" element={<ApplicationsPage />} />
           </Routes>
         </div>
 
