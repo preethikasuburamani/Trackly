@@ -1,0 +1,10 @@
+@mixin btn_base($padding, $font-size, $bg-color, $color) {
+    padding: $padding;
+    font-size: $font-size;
+    background-color: $bg-color;
+    border: none;
+    border-radius: 8px;
+    color: $color;
+    cursor: pointer;
+    
+}

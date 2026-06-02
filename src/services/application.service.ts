@@ -3,6 +3,7 @@ import {
   collection,
   deleteDoc,
   doc,
+  getDoc,
   getDocs,
   query,
   updateDoc,
@@ -52,6 +53,26 @@ class ApplicationService {
       doc(db, this.collectionName, id)
     );
   }
+
+
+  async getById(id: string) {
+  const documentRef = doc(
+    db,
+    this.collectionName,
+    id
+  );
+
+  const snapshot = await getDoc(documentRef);
+
+  if (!snapshot.exists()) {
+    return null;
+  }
+
+  return {
+    id: snapshot.id,
+    ...(snapshot.data() as Application),
+  };
+}
 }
 
 export default new ApplicationService();
