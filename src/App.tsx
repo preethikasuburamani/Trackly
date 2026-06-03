@@ -1,10 +1,9 @@
-import "./App.css";
-import ApplicationsPage from "./Layout/ApplicationsPage";
-import Header from "./Layout/Header/Header";
-
-import Home from "./Layout/Home";
-import Login from "./Layout/Login/Login";
-import Register from "./Layout/Register/Register";
+import "./App.scss";
+import ApplicationsPage from "./pages/Application/ApplicationsPage";
+import Header from "./pages/Header/Header";
+import Home from "./pages/Home/Home";
+import Login from "./pages/Login/Login";
+import Register from "./pages/Register/Register";
 import { HashRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
@@ -20,6 +19,8 @@ function App() {
             <Route path="/Login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/application" element={<ApplicationsPage />} />
+
+            
           </Routes>
         </div>
 

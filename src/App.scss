@@ -1,0 +1,15 @@
+@use "./Sass/Variable" as *;
+
+.app-container {
+  display: flex;
+  min-height: 100vh;
+  background-color: $primarybg;
+  color: $primarytext;
+  font-family: $fontfamily;
+}
+
+.main-content {
+  flex: 1;
+  padding: 2rem;
+  overflow-y: auto;
+}

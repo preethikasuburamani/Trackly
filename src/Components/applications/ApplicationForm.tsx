@@ -73,6 +73,7 @@ export default function ApplicationForm({
   };
 
   return (
+    <div className="form-container">
     <form
       onSubmit={handleSubmit(onSubmit)}
       className="application-form"
@@ -149,5 +150,6 @@ export default function ApplicationForm({
           : "Add Application"}
       </button>
     </form>
+  </div>
   );
 }

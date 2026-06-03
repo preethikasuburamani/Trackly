@@ -1,0 +1,63 @@
+@use "../../Sass/Variable" as *;
+
+.header-container {
+  width: 260px;
+  min-height: 100vh;
+
+  background-color: $secondarybg;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  padding: 2rem 1rem;
+
+  border-right: 1px solid rgba(255,255,255,0.1);
+
+  .logo {
+    h1 {
+      color: $primarytext;
+      cursor: pointer;
+      text-align: center;
+      font-size: 2rem;
+    }
+  }
+
+  .nav-links {
+    flex: 1;
+    margin-top: 3rem;
+
+    ul {
+      list-style: none;
+      padding: 0;
+
+      .list {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+
+        padding: 14px;
+        margin-bottom: 10px;
+
+        border-radius: $radius;
+
+        cursor: pointer;
+        transition: 0.3s;
+
+        &:hover {
+          background-color: rgba(225, 142, 225, 0.15);
+        }
+      }
+    }
+  }
+
+  .profile {
+    border-top: 1px solid rgba(255,255,255,.1);
+    padding-top: 1rem;
+
+    h3 {
+      color: $secondarytext;
+      font-size: $secondaryFontSize;
+    }
+  }
+}
