@@ -144,7 +144,7 @@ export default function ApplicationForm({
         </option>
       </select>
 
-      <button type="submit">
+      <button type="submit" className="btn">
         {application
           ? "Update Application"
           : "Add Application"}

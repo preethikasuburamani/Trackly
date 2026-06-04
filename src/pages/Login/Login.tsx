@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import { Eye, EyeOff, Mail, Lock } from 'lucide-react';
 import './Login.scss';
+import AuthService from "../../services/auth.service";
+import { useNavigate } from "react-router-dom";
+
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
-
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -17,10 +20,24 @@ const Login = () => {
     });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log('Login Data:', formData);
-  };
+ const handleSubmit = async (
+  e: React.FormEvent
+) => {
+  e.preventDefault();
+
+  try {
+    await AuthService.login(
+      formData.email,
+      formData.password
+    );
+
+    navigate("/dashboard");
+  } catch {
+    alert(
+      "Invalid email or password"
+    );
+  }
+};
 
   return (
     <div className="auth-page login-bg">

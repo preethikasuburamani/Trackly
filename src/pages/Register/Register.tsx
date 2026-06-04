@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { Eye, EyeOff, Mail, Lock, User } from 'lucide-react';
 import '../Login/Login.scss';
+import AuthService from "../../services/auth.service";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
 
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirm, setShowConfirm] = useState(false);
-
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     fullName: '',
     email: '',
@@ -21,16 +23,33 @@ const Register = () => {
     });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleSubmit = async (
+  e: React.FormEvent
+) => {
+  e.preventDefault();
 
-    if (formData.password !== formData.confirmPassword) {
-      alert('Passwords do not match');
-      return;
-    }
+  if (
+    formData.password !==
+    formData.confirmPassword
+  ) {
+    alert(
+      "Passwords do not match"
+    );
+    return;
+  }
 
-    console.log('Register Data:', formData);
-  };
+  try {
+    await AuthService.register(
+      formData.fullName,
+      formData.email,
+      formData.password
+    );
+
+    navigate("/dashboard");
+  } catch (error: any) {
+    alert(error.message);
+  }
+};
 
   return (
     <div className="auth-page register-bg">

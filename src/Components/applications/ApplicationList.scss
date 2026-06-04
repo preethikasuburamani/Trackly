@@ -46,6 +46,16 @@
   }
 
   > button {
-    margin-top: 1rem;
+   
+      @include btn_base(
+      14px,
+      1rem,
+      $primarytext,
+      $primarybg
+    );
+
+    font-weight: 600;
+    margin-top: 2rem;
+  
   }
 }

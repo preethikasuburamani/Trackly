@@ -1,0 +1,77 @@
+@use "../../Sass/Variable" as *;
+@use "../../Sass/mixin" as *;
+
+
+.auth-page {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-bg,
+.register-bg {
+  background-color: $primarybg;
+}
+
+.auth-card {
+  width: 420px;
+
+  background-color: white;
+
+  padding: 2rem;
+
+  border-radius: 16px;
+
+  box-shadow: 0 10px 30px rgba(0,0,0,.2);
+
+  h1 {
+    color: $primarybg;
+    margin-bottom: 1rem;
+  }
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.input-wrapper {
+  display: flex;
+  align-items: center;
+
+  border: 1px solid $border;
+
+  border-radius: 10px;
+
+  padding: 14px;
+
+  input {
+    flex: 1;
+
+    border: none;
+    outline: none;
+
+    margin-left: 10px;
+  }
+
+  span {
+    cursor: pointer;
+  }
+}
+
+.icon {
+  color: $muted;
+}
+
+.btn {
+  @include btn_base(
+    12px,
+    1rem,
+    $primarytext,
+    $primarybg
+  );
+
+  font-weight: 600;
+}

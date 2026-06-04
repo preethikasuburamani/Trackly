@@ -2,10 +2,12 @@
 
 .app-container {
   display: flex;
-  min-height: 100vh;
   background-color: $primarybg;
   color: $primarytext;
   font-family: $fontfamily;
+ .header-container{
+    margin-right: 7rem;
+ }
 }
 
 .main-content {
