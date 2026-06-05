@@ -2,44 +2,47 @@ import {
   useEffect,
   useState,
 } from "react";
+import './Dashboard.scss';
+
 
 import ApplicationService from "../../services/application.service";
+
 import StatsCards from "../../Components/dashboard/StatsCards";
 import StatusChart from "../../Components/dashboard/StatusChart";
+import UpcomingInterviews from "../../Components/dashboard/UpcomingInterviews";
+import RecentApplications from "../../Components/dashboard/RecentApplications";
+
 import { useAuth } from "../../context/AuthContext";
 
 import type {
   Application,
 } from "../../types/application.types";
 
-export default function Dashboard() {
-  const { user } =
-    useAuth();
+import "./Dashboard.scss";
 
-  const [
-    applications,
-    setApplications,
-  ] = useState<
-    Application[]
-  >([]);
+export default function Dashboard() {
+  const { user } = useAuth();
+
+  const [applications, setApplications] =
+    useState<Application[]>([]);
 
   useEffect(() => {
     if (!user) return;
+      console.log(user);
 
     loadData();
   }, [user]);
 
-  const loadData =
-    async () => {
-      const data =
-        await ApplicationService.getAll(
-          user!.uid
-        );
-
-      setApplications(
-        data as Application[]
+  const loadData = async () => {
+    const data =
+      await ApplicationService.getAll(
+        user!.uid
       );
-    };
+
+    setApplications(
+      data as Application[]
+    );
+  };
 
   const totalApplications =
     applications.length;
@@ -47,8 +50,7 @@ export default function Dashboard() {
   const totalInterviews =
     applications.filter(
       (a) =>
-        a.status ===
-        "Interview"
+        a.status === "Interview"
     ).length;
 
   const totalOffers =
@@ -60,8 +62,7 @@ export default function Dashboard() {
   const totalRejected =
     applications.filter(
       (a) =>
-        a.status ===
-        "Rejected"
+        a.status === "Rejected"
     ).length;
 
   const chartData = [
@@ -70,33 +71,35 @@ export default function Dashboard() {
       value:
         applications.filter(
           (a) =>
-            a.status ===
-            "Applied"
+            a.status === "Applied"
         ).length,
     },
     {
       name: "Interview",
-      value:
-        totalInterviews,
+      value: totalInterviews,
     },
     {
       name: "Offer",
-      value:
-        totalOffers,
+      value: totalOffers,
     },
     {
       name: "Rejected",
-      value:
-        totalRejected,
+      value: totalRejected,
     },
   ];
+  
 
   return (
-    <div className="space-y-6 p-6">
-      <h1 className="text-4xl font-bold">
-        Dashboard
-      </h1>
-    
+    <div className="dashboard">
+
+      <div className="dashboard-header">
+        <h1>Dashboard</h1>
+
+        <p>
+          Track your job search
+          progress.
+        </p>
+      </div>
 
       <StatsCards
         totalApplications={
@@ -113,9 +116,32 @@ export default function Dashboard() {
         }
       />
 
-      <StatusChart
-        data={chartData}
+      <div className="dashboard-row">
+
+        <div className="dashboard-card">
+          <h3>
+            Application Status
+          </h3>
+
+          <StatusChart
+            data={chartData}
+          />
+        </div>
+
+        <UpcomingInterviews
+          applications={
+            applications
+          }
+        />
+
+      </div>
+
+      <RecentApplications
+        applications={
+          applications
+        }
       />
+
     </div>
   );
 }

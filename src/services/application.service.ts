@@ -24,19 +24,16 @@ class ApplicationService {
     );
   }
 
-  async getAll(userId: string) {
-    const q = query(
-      collection(db, this.collectionName),
-      where("userId", "==", userId)
-    );
+async getAll() {
+  const snapshot = await getDocs(
+    collection(db, this.collectionName)
+  );
 
-    const snapshot = await getDocs(q);
-
-    return snapshot.docs.map((document) => ({
-      id: document.id,
-      ...(document.data() as Application),
-    }));
-  }
+  return snapshot.docs.map((document) => ({
+    id: document.id,
+    ...(document.data() as Application),
+  }));
+}
 
   async update(
     id: string,

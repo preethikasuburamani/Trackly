@@ -1,5 +1,4 @@
  
-
 interface Props {
   totalApplications: number;
   totalInterviews: number;
