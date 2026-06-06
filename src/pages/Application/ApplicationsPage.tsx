@@ -1,57 +1,63 @@
 import { useEffect, useState } from "react";
-import "./ApplicationPgae.scss";
 
 import ApplicationService from "../../services/application.service";
-import type { Application } from "../../types/application.types";
 import ApplicationForm from "../../Components/applications/ApplicationForm";
 import ApplicationList from "../../Components/applications/ApplicationList";
 
+import { useAuth } from "../../context/AuthContext";
 
+import type { Application } from "../../types/application.types";
 
 export default function ApplicationsPage() {
+  const { user } = useAuth();
+
   const [applications, setApplications] = useState<Application[]>([]);
   const [selectedApplication, setSelectedApplication] =
     useState<Application | null>(null);
 
-  const userId = "test-user-id";
+  useEffect(() => {
+    if (!user) return;
+
+    fetchApplications();
+  }, [user]);
 
   const fetchApplications = async () => {
-    const data = await ApplicationService.getAll(userId);
-    setApplications(data as Application[]);
+    if (!user) return;
+
+    const data = await ApplicationService.getAll(user.uid);
+
+    setApplications(data);
   };
 
-  useEffect(() => {
-    fetchApplications();
-  }, []);
-
-  // ✅ EDIT handler
   const handleEdit = (application: Application) => {
     setSelectedApplication(application);
   };
 
-  // ✅ DELETE handler
   const handleDelete = async (id: string) => {
     await ApplicationService.delete(id);
+
     fetchApplications();
   };
 
-  // ✅ After create/update success
   const handleSuccess = () => {
     setSelectedApplication(null);
+
     fetchApplications();
   };
+
+  if (!user) {
+    return <p>Please login</p>;
+  }
 
   return (
     <div className="application-page">
       <h1>Applications</h1>
 
       <ApplicationForm
-        userId={userId}
+        userId={user.uid}
         application={selectedApplication}
         onSuccess={handleSuccess}
       />
-
-    
 
       <ApplicationList
         applications={applications}

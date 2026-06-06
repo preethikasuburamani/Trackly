@@ -10,7 +10,7 @@ export default function UpcomingInterviews({
 
   const interviews =
     applications.filter(
-      app =>
+      (app) =>
         app.status === "Interview"
     );
 
@@ -21,19 +21,33 @@ export default function UpcomingInterviews({
         Upcoming Interviews
       </h3>
 
-      {interviews.map(app => (
-        <div
-          key={app.id}
-          className="interview-item"
-        >
-          <h4>{app.company}</h4>
+      {interviews.length === 0 && (
+        <p>
+          No interviews scheduled
+        </p>
+      )}
 
-          <p>{app.role}</p>
+      {interviews.map((app) => (
+
+        <div
+          className="interview-item"
+          key={app.id}
+        >
+
+          <h4>
+            {app.company}
+          </h4>
+
+          <p>
+            {app.role}
+          </p>
 
           <span>
             {app.interviewDate}
           </span>
+
         </div>
+
       ))}
 
     </div>

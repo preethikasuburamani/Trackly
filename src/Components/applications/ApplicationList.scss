@@ -1,61 +1,20 @@
-@use "../../Sass/Variable" as *;
-@use "../../Sass/mixin" as *;
-
 .application-list {
-  background: white;
-  padding: 2rem;
+  background: #1e293b;
+  padding: 25px;
+  border-radius: 16px;
+}
 
-  border-radius: 12px;
+.application-list table {
+  width: 100%;
+  border-collapse: collapse;
+}
 
-  overflow-x: auto;
+.application-list th,
+.application-list td {
+  padding: 15px;
+  border-bottom: 1px solid #334155;
+}
 
-  table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-
-  th {
-    background-color: $secondarybg;
-    color: white;
-
-    padding: 1rem;
-    text-align: left;
-  }
-
-  td {
-    padding: 1rem;
-    border-bottom: 1px solid $border;
-
-    color: $text;
-  }
-
-  a {
-    color: $primary;
-    text-decoration: none;
-  }
-
-  button {
-    margin-right: 10px;
-
-    @include btn_base(
-      8px 16px,
-      .9rem,
-      $primarytext,
-      $primarybg
-    );
-  }
-
-  > button {
-   
-      @include btn_base(
-      14px,
-      1rem,
-      $primarytext,
-      $primarybg
-    );
-
-    font-weight: 600;
-    margin-top: 2rem;
-  
-  }
+.application-list button {
+  margin-right: 10px;
 }

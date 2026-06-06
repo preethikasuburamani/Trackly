@@ -1,10 +1,8 @@
-@use "../../Sass/Variable" as *;
-
 .application-page {
-    text-align: center;
-    
+  padding: 2rem;
+  color: white;
+
   h1 {
-    color: $primarytext;
     margin-bottom: 2rem;
   }
 }

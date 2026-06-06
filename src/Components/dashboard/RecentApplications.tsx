@@ -9,7 +9,7 @@ export default function RecentApplications({
 }: Props) {
 
   return (
-    <div className="dashboard-card">
+    <div className="dashboard-card recent-card">
 
       <h3>
         Recent Applications
@@ -21,8 +21,8 @@ export default function RecentApplications({
 
           <tr>
             <th>Company</th>
+            <th>Role</th>
             <th>Status</th>
-            <th>Location</th>
           </tr>
 
         </thead>
@@ -31,25 +31,25 @@ export default function RecentApplications({
 
           {applications
             .slice(0, 5)
-            .map(app => (
+            .map((app) => (
 
-            <tr key={app.id}>
+              <tr key={app.id}>
 
-              <td>
-                {app.company}
-              </td>
+                <td>
+                  {app.company}
+                </td>
 
-              <td>
-                {app.status}
-              </td>
+                <td>
+                  {app.role}
+                </td>
 
-              <td>
-                {app.location}
-              </td>
+                <td>
+                  {app.status}
+                </td>
 
-            </tr>
+              </tr>
 
-          ))}
+            ))}
 
         </tbody>
 

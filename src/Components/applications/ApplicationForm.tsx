@@ -64,6 +64,7 @@ export default function ApplicationForm({
         });
       }
 
+
       reset();
 
       onSuccess();
@@ -143,6 +144,11 @@ export default function ApplicationForm({
           Rejected
         </option>
       </select>
+
+    <input
+  type="date"
+  {...register("interviewDate")}
+/>
 
       <button type="submit" className="btn">
         {application

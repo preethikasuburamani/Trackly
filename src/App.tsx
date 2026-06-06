@@ -1,33 +1,76 @@
 import "./App.scss";
-import ApplicationsPage from "./pages/Application/ApplicationsPage";
-import CalendarPage from "./pages/Calendar/CalendarPage";
-import Dashboard from "./pages/Dashboard/Dashboard";
+
+import {
+  HashRouter as Router,
+  Routes,
+  Route,
+} from "react-router-dom";
+
 import Header from "./pages/Header/Header";
+
 import Home from "./pages/Home/Home";
 import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
-import { HashRouter as Router, Routes, Route } from "react-router-dom";
+
+import Dashboard from "./pages/Dashboard/Dashboard";
+import ApplicationsPage from "./pages/Application/ApplicationsPage";
+import CalendarPage from "./pages/Calendar/CalendarPage";
+
+import ProtectedRoute from "./routes/ProtectedRoute";
 
 function App() {
   return (
     <Router>
       <section className="app-container">
-        
-        <div className="header-container"> <Header/></div>
-     
-        <div>
-          <Routes>
-            <Route path="/" element={<Home/>} />        
-            <Route path="/Login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/application" element={<ApplicationsPage />} />
-            <Route path="/calendar" element={<CalendarPage/>} />
-            <Route path="/dashboard" element={<Dashboard/>} />
-          </Routes>
-        </div>
 
-      </section> 
-      
+        <Header />
+
+        <Routes>
+
+          <Route
+            path="/"
+            element={<Home />}
+          />
+
+          <Route
+            path="/login"
+            element={<Login />}
+          />
+
+          <Route
+            path="/register"
+            element={<Register />}
+          />
+
+          <Route
+            path="/dashboard"
+            element={
+              <ProtectedRoute>
+                <Dashboard />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/application"
+            element={
+              <ProtectedRoute>
+                <ApplicationsPage />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/calendar"
+            element={
+              <ProtectedRoute>
+                <CalendarPage />
+              </ProtectedRoute>
+            }
+          />
+
+        </Routes>
+      </section>
     </Router>
   );
 }

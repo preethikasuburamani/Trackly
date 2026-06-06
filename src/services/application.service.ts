@@ -24,16 +24,19 @@ class ApplicationService {
     );
   }
 
-async getAll() {
-  const snapshot = await getDocs(
-    collection(db, this.collectionName)
-  );
+  async getAll(userId: string) {
+    const q = query(
+      collection(db, this.collectionName),
+      where("userId", "==", userId)
+    );
 
-  return snapshot.docs.map((document) => ({
-    id: document.id,
-    ...(document.data() as Application),
-  }));
-}
+    const snapshot = await getDocs(q);
+
+    return snapshot.docs.map((document) => ({
+      id: document.id,
+      ...(document.data() as Application),
+    }));
+  }
 
   async update(
     id: string,
@@ -51,25 +54,24 @@ async getAll() {
     );
   }
 
-
   async getById(id: string) {
-  const documentRef = doc(
-    db,
-    this.collectionName,
-    id
-  );
+    const documentRef = doc(
+      db,
+      this.collectionName,
+      id
+    );
 
-  const snapshot = await getDoc(documentRef);
+    const snapshot = await getDoc(documentRef);
 
-  if (!snapshot.exists()) {
-    return null;
+    if (!snapshot.exists()) {
+      return null;
+    }
+
+    return {
+      id: snapshot.id,
+      ...(snapshot.data() as Application),
+    };
   }
-
-  return {
-    id: snapshot.id,
-    ...(snapshot.data() as Application),
-  };
-}
 }
 
 export default new ApplicationService();
