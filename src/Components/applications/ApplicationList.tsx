@@ -158,9 +158,11 @@ export default function ApplicationList({
         )}
       </tbody>
     </table>
-    <button onClick={downloadCSV} className="btn">
-  Download Applications
-</button>
+   <div className="download-wrapper">
+  <button onClick={downloadCSV} className="download-btn">
+    Download Applications
+  </button>
+</div>
     </div>
   );
 }

@@ -1,12 +1,10 @@
 import { useEffect, useState } from "react";
-
 import ApplicationService from "../../services/application.service";
 import ApplicationForm from "../../Components/applications/ApplicationForm";
 import ApplicationList from "../../Components/applications/ApplicationList";
-
 import { useAuth } from "../../context/AuthContext";
-
 import type { Application } from "../../types/application.types";
+import "./ApplicationPgae.scss";
 
 export default function ApplicationsPage() {
   const { user } = useAuth();
@@ -51,7 +49,6 @@ export default function ApplicationsPage() {
 
   return (
     <div className="application-page">
-      <h1>Applications</h1>
 
       <ApplicationForm
         userId={user.uid}

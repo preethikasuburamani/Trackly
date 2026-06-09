@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import "./Dashboard.scss";
+import { useNavigate } from "react-router-dom";
 
 import ApplicationService from "../../services/application.service";
 
@@ -14,6 +15,7 @@ import type { Application } from "../../types/application.types";
 
 export default function Dashboard() {
   const { user } = useAuth();
+  const navigate = useNavigate();
 
   const [applications, setApplications] =
     useState<Application[]>([]);
@@ -85,6 +87,22 @@ export default function Dashboard() {
             and interviews.
           </p>
         </div>
+
+        <div>
+        <div className="application">
+          <button onClick={() => navigate("/application")} className="btn">
+            + Application
+          </button>
+        </div>
+        <div className="auth">
+          <button onClick={() => navigate("/login")} className="btn">
+            Login
+          </button>
+          <button onClick={() => navigate("/register")} className="btn">
+            Register
+          </button>
+        </div>
+      </div>
 
       </div>
 

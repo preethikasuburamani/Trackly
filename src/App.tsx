@@ -1,14 +1,7 @@
 import "./App.scss";
-
-import {
-  HashRouter as Router,
-  Routes,
-  Route,
-} from "react-router-dom";
+import {HashRouter as Router, Routes,Route,} from "react-router-dom";
 
 import Header from "./pages/Header/Header";
-
-import Home from "./pages/Home/Home";
 import Login from "./pages/Login/Login";
 import Register from "./pages/Register/Register";
 
@@ -27,9 +20,13 @@ function App() {
 
         <Routes>
 
-          <Route
+           <Route
             path="/"
-            element={<Home />}
+            element={
+              <ProtectedRoute>
+                <Dashboard />
+              </ProtectedRoute>
+            }
           />
 
           <Route
@@ -42,14 +39,7 @@ function App() {
             element={<Register />}
           />
 
-          <Route
-            path="/dashboard"
-            element={
-              <ProtectedRoute>
-                <Dashboard />
-              </ProtectedRoute>
-            }
-          />
+         
 
           <Route
             path="/application"

@@ -79,7 +79,7 @@ export default function ApplicationForm({
       onSubmit={handleSubmit(onSubmit)}
       className="application-form"
     >
-      <h2>
+      <h2 className="form-title">
         {application
           ? "Edit Application"
           : "Add Application"}
