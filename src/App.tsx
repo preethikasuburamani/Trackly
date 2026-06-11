@@ -10,6 +10,8 @@ import ApplicationsPage from "./pages/Application/ApplicationsPage";
 import CalendarPage from "./pages/Calendar/CalendarPage";
 
 import ProtectedRoute from "./routes/ProtectedRoute";
+import SavedJobsPage from "./pages/SaveJobs/SavedJobsPage";
+import SettingsPage from "./pages/Settings/SettingsPage";
 
 function App() {
   return (
@@ -58,6 +60,24 @@ function App() {
               </ProtectedRoute>
             }
           />
+
+          <Route
+            path="/saved-jobs"
+            element={
+              <ProtectedRoute>
+                <SavedJobsPage />
+              </ProtectedRoute>
+            }
+          />
+           <Route
+            path="/settings"
+            element={
+              <ProtectedRoute>
+                <SettingsPage />
+              </ProtectedRoute>
+            }
+          />
+
 
         </Routes>
       </section>

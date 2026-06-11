@@ -32,8 +32,8 @@ const Header = () => {
                     <li onClick={() => navigate('/')} className="list"> <IoHome />   Dashboard</li>
                     <li onClick={() => navigate('/application')} className="list"> <MdPlaylistAddCircle />  Applications</li>
                     <li onClick={() => navigate('/calendar')} className="list"> <FaCalendarDay /> Calendar</li>
-                    <li onClick={() => navigate('/')} className="list"> <FaStar /> Saved Jobs</li>
-                    <li onClick={() => navigate('/')} className="list"> <IoSettingsSharp /> Settings</li>
+                    <li onClick={() => navigate('/saved-jobs')} className="list"> <FaStar /> Saved Jobs</li>
+                    <li onClick={() => navigate('/settings')} className="list"> <IoSettingsSharp /> Settings</li>
 
                 </ul>
             </nav>

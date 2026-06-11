@@ -1,44 +1,39 @@
-import {
-  useEffect,
-  useState,
-} from "react";
-
+import {useEffect,useState,} from "react";
+import { useAuth,} from "../../context/AuthContext";
 import SavedJobsService from "../../services/savedJobs.service";
+import type { SavedJob } from "../../types/savedJob.types";
+import "./SavedJobs.scss";
+import SavedJobForm from "./SavedJobForm";
+import SavedJobList from "./SavedJobsList";
 
-import {
-  useAuth,
-} from "../../context/AuthContext";
 
 export default function SavedJobsPage() {
-
   const { user } =
     useAuth();
 
   const [jobs, setJobs] =
-    useState<any[]>([]);
+    useState<SavedJob[]>([]);
 
   useEffect(() => {
-
     if (!user) return;
 
     loadJobs();
-
   }, [user]);
 
   const loadJobs =
     async () => {
-
       const data =
         await SavedJobsService.getSavedJobs(
           user!.uid
         );
 
-      setJobs(data);
+      setJobs(
+        data as SavedJob[]
+      );
     };
 
-  const removeJob =
+  const handleDelete =
     async (id: string) => {
-
       await SavedJobsService.removeSavedJob(
         id
       );
@@ -47,44 +42,23 @@ export default function SavedJobsPage() {
     };
 
   return (
-    <div className="saved-jobs">
+    <div className="saved-jobs-page">
 
       <h1>
         Saved Jobs
       </h1>
 
-      {jobs.map(job => (
+      <SavedJobForm
+        onSuccess={loadJobs}
+      />
 
-        <div
-          key={job.id}
-          className="saved-job-card"
-        >
+      <SavedJobList
+        jobs={jobs}
+        onDelete={
+          handleDelete
+        }
+      />
 
-          <h3>
-            {job.company}
-          </h3>
-
-          <p>
-            {job.role}
-          </p>
-
-          <p>
-            {job.location}
-          </p>
-
-          <button
-            onClick={() =>
-              removeJob(
-                job.id
-              )
-            }
-          >
-            Delete
-          </button>
-
-        </div>
-
-      ))}
     </div>
   );
 }
