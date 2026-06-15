@@ -31,7 +31,7 @@ const Login = () => {
       formData.password
     );
 
-    navigate("/dashboard");
+    navigate("/");
   } catch {
     alert(
       "Invalid email or password"
