@@ -1,36 +1,52 @@
+@use "../../Sass/variable" as *;
+
 .form-container {
-  background: #1e293b;
-  padding: 25px;
-  border-radius: 16px;
-  margin-bottom: 30px;
-  font-size: 1rem;
-  .form-title{
-    text-align: center;
-    font-size: 1.5rem;
-  }
+  display: flex;
+  justify-content: center;
 }
 
 .application-form {
+  width: 100%;
+  max-width: 900px;
+
+  background: rgba(255,255,255,.05);
+
+  backdrop-filter: blur(15px);
+
+  border: 1px solid $border;
+
+  border-radius: 20px;
+
+  padding: 35px;
+
   display: grid;
-  gap: 15px;
+  gap: 18px;
+}
+
+.form-title {
+  text-align: center;
+
+  color: $primarytext;
+
+  margin-bottom: 20px;
 }
 
 .application-form input,
 .application-form select {
-  padding: 12px;
-  border-radius: 10px;
-  border: none;
+  padding: 14px;
+
+  border-radius: 12px;
+
+  border: 1px solid rgba(255,255,255,.1);
+
+  background: rgba(255,255,255,.05);
+
+  color: white;
 }
 
-.btn {
-  background: #7c3aed;
-  color: white;
-  border: none;
-  padding: 12px;
-  border-radius: 10px;
-  cursor: pointer;
+.application-form input:focus,
+.application-form select:focus {
+  outline: none;
 
-  &:hover {
-    background: #6d28d9;
-  }
+  border-color: $primarytext;
 }

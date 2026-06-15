@@ -90,7 +90,7 @@ export default function Dashboard() {
 
         <div>
         <div className="application">
-          <button onClick={() => navigate("/application")} className="btn">
+          <button onClick={() => navigate("/application")} className="btn Application-btn">
             + Application
           </button>
         </div>

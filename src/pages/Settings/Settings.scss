@@ -1,29 +1,72 @@
 .settings-page {
-  flex: 1;
-  padding: 2rem;
+  max-width: 1100px;
+
+  margin: auto;
+
+  padding: 40px;
+}
+
+.settings-page h1 {
+  margin-bottom: 30px;
 }
 
 .settings-card {
-  background:
-    rgba(255,255,255,.05);
+  background: rgba(255,255,255,.05);
 
-  backdrop-filter: blur(20px);
+  backdrop-filter: blur(15px);
 
   border-radius: 20px;
 
+  border: 1px solid rgba(255,255,255,.08);
+
   padding: 25px;
 
-  margin-bottom: 20px;
+  margin-bottom: 25px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 
-.settings-card button {
-  background: red;
+.settings-card h2 {
+  color: #c084fc;
+}
+
+.settings-card input {
+  padding: 14px;
+
+  border-radius: 12px;
+
+  border: 1px solid rgba(255,255,255,.1);
+
+  background: rgba(255,255,255,.05);
+
+  color: white;
+}
+
+.settings-actions {
+  display: flex;
+  gap: 15px;
+}
+
+.save-btn {
+  background: #22c55e;
+  color: white;
 
   border: none;
 
+  padding: 12px 24px;
+
+  border-radius: 12px;
+}
+
+.logout-btn {
+  background: #ef4444;
   color: white;
 
-  padding: 12px 20px;
+  border: none;
 
-  border-radius: 10px;
+  padding: 12px 24px;
+
+  border-radius: 12px;
 }

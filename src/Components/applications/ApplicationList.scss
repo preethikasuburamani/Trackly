@@ -1,40 +1,66 @@
 .application-list {
-  background: #1e293b;
+  background: rgba(255,255,255,.05);
+
+  backdrop-filter: blur(15px);
+
+  border-radius: 20px;
+
   padding: 25px;
-  border-radius: 16px;
+
+  overflow-x: auto;
 }
 
-.application-list table {
+table {
   width: 100%;
   border-collapse: collapse;
 }
 
-.application-list th,
-.application-list td {
-  padding: 15px;
-  border-bottom: 1px solid #334155;
+thead {
+  background: rgba(255,255,255,.05);
 }
 
-.application-list button {
-  padding: 8px 16px;
+th,
+td {
+  padding: 18px;
+  text-align: left;
+}
+
+tr {
+  border-bottom: 1px solid rgba(255,255,255,.08);
+}
+
+tbody tr:hover {
+  background: rgba(255,255,255,.03);
+}
+
+td button {
+  margin-right: 10px;
+
+  border: none;
+
+  padding: 8px 14px;
+
+  border-radius: 8px;
+
+  cursor: pointer;
 }
 
 .download-wrapper {
-  display: flex;
-  justify-content: center;
   margin-top: 20px;
 }
 
-
 .download-btn {
-  background: #7c3aed;
-  color: white;
-  border: none;
-  padding: 12px;
-  border-radius: 10px;
-  cursor: pointer;
+  background: linear-gradient(
+    135deg,
+    #9333ea,
+    #6366f1
+  );
 
-  &:hover {
-    background: #6d28d9;
-  }
+  color: white;
+
+  border: none;
+
+  padding: 12px 24px;
+
+  border-radius: 12px;
 }

@@ -1,10 +1,25 @@
 .calendar-page {
-  padding: 2rem;
-  height: 90vh;
+  padding: 40px;
+  height: calc(100vh - 100px);
 }
 
 .rbc-calendar {
-  background: white;
-  border-radius: 16px;
-  padding: 1rem;
+  background: rgba(255,255,255,.05);
+
+  border-radius: 20px;
+
+  padding: 20px;
+
+  backdrop-filter: blur(15px);
+
+  color: white;
+}
+
+.rbc-event {
+  background: #9333ea !important;
+  border-radius: 8px !important;
+}
+
+.rbc-toolbar button {
+  color: white !important;
 }

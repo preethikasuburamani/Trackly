@@ -11,6 +11,7 @@ import CalendarPage from "./pages/Calendar/CalendarPage";
 
 import ProtectedRoute from "./routes/ProtectedRoute";
 import SavedJobsPage from "./pages/SaveJobs/SavedJobsPage";
+import Profile from "./pages/Profile/Profile";
 import SettingsPage from "./pages/Settings/SettingsPage";
 
 function App() {
@@ -73,7 +74,7 @@ function App() {
             path="/settings"
             element={
               <ProtectedRoute>
-                <SettingsPage />
+                <SettingsPage/>
               </ProtectedRoute>
             }
           />

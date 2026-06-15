@@ -1,17 +1,43 @@
-@use "./Sass/Variable" as *;
+@use "./Sass/variable" as *;
 
-.app-container {
-  display: flex;
-  background-color: $primarybg;
-  color: $primarytext;
-  font-family: $fontfamily;
- .header-container{
-    margin-right: 7rem;
- }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.main-content {
-  flex: 1;
-  padding: 2rem;
-  overflow-y: auto;
+body {
+  background: $primarybg;
+  color: $secondarytext;
+  font-family: $fontfamily;
+}
+
+.app-container {
+  min-height: 100vh;
+  background: linear-gradient(
+    135deg,
+    #0f172a,
+    #1e1b4b,
+    #111827
+  );
+}
+
+.btn {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(
+    135deg,
+    #9333ea,
+    #6366f1
+  );
+
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: .3s;
+
+  &:hover {
+    transform: translateY(-3px);
+  }
 }
