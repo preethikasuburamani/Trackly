@@ -100,6 +100,7 @@ export default function SettingsPage() {
   const logout =
     async () => {
       await AuthService.logout();
+      
     };
 
   return (
@@ -250,6 +251,7 @@ export default function SettingsPage() {
         <button
           className="logout-btn"
           onClick={logout}
+
         >
           Logout
         </button>

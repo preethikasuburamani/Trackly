@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import "./Dashboard.scss";
-import { useNavigate } from "react-router-dom";
 
 import ApplicationService from "../../services/application.service";
 
@@ -12,6 +11,7 @@ import RecentApplications from "../../Components/dashboard/RecentApplications";
 import { useAuth } from "../../context/AuthContext";
 
 import type { Application } from "../../types/application.types";
+import { useNavigate } from "react-router-dom";
 
 export default function Dashboard() {
   const { user } = useAuth();
@@ -76,7 +76,7 @@ export default function Dashboard() {
 
   return (
     <div className="dashboard">
-
+       
       <div className="dashboard-header">
 
         <div>
@@ -94,18 +94,10 @@ export default function Dashboard() {
             + Application
           </button>
         </div>
-        <div className="auth">
-          <button onClick={() => navigate("/login")} className="btn">
-            Login
-          </button>
-          <button onClick={() => navigate("/register")} className="btn">
-            Register
-          </button>
-        </div>
+       
       </div>
 
       </div>
-
       <StatsCards
         totalApplications={
           totalApplications

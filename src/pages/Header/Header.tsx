@@ -1,35 +1,39 @@
 import { useNavigate } from "react-router-dom";
-// import Logo from "../../assets/Logo.png";
-import './Header.scss';
+import "./Header.scss";
 
-// incons
 import { IoHome } from "react-icons/io5";
 import { IoSettingsSharp } from "react-icons/io5";
 import { MdPlaylistAddCircle } from "react-icons/md";
 import { FaCalendarDay } from "react-icons/fa";
 import { FaStar } from "react-icons/fa";
 
-
+import { useAuth } from "../../context/AuthContext";
 
 const Header = () => {
+  const navigate = useNavigate();
 
-    const navigate = useNavigate();
-    const HandelRedirect = () => {
-        navigate('/');
-    }
+  const { user } = useAuth();
+
+  if (!user) {
+    return null;
+  }
+
   return (
-    <div className="header-container">
+    <header className="header-container">
 
-        <div  className="logo" >
-            {/* <h1><img src={Logo} alt="Trackly Logo" style={{ width: '400px', height: '300px' }} onClick={HandelRedirect}/></h1> */}
-            <h1 onClick={HandelRedirect}>Trackly</h1>
-        </div>
+      <div
+        className="logo"
+        onClick={() =>
+          navigate("/dashboard")
+        }
+      >
+        <h1>Trackly</h1>
+      </div>
 
-
-        <div className="nav-links">
+         <div className="nav-links">
             <nav>
                 <ul>
-                    <li onClick={() => navigate('/')} className="list"> <IoHome />   Dashboard</li>
+                    <li onClick={() => navigate('/dashboard')} className="list"> <IoHome />   Dashboard</li>
                     <li onClick={() => navigate('/application')} className="list"> <MdPlaylistAddCircle />  Applications</li>
                     <li onClick={() => navigate('/calendar')} className="list"> <FaCalendarDay /> Calendar</li>
                     <li onClick={() => navigate('/saved-jobs')} className="list"> <FaStar /> Saved Jobs</li>
@@ -40,13 +44,14 @@ const Header = () => {
 
         </div>
 
-        <div className="profile">
-            <h3>Preethika Subramani</h3>
-        </div>
-        
-    </div>
-  )
-}
+      <div className="profile">
+        <h3>
+          {user.displayName}
+        </h3>
+      </div>
 
-export default Header
+    </header>
+  );
+};
 
+export default Header;
