@@ -1,76 +1,72 @@
-import { useForm } from "react-hook-form";
-import SavedJobsService from "../../services/savedJobs.service";
-import { useAuth } from "../../context/AuthContext";
-
 import type { SavedJob } from "../../types/savedJob.types";
 
 interface Props {
-  onSuccess: () => void;
+  jobs: SavedJob[];
+
+  onDelete: (
+    id: string
+  ) => void;
 }
 
 export default function SavedJobForm({
-  onSuccess,
+  jobs,
+  onDelete,
 }: Props) {
-  const { user } = useAuth();
 
-  const {
-    register,
-    handleSubmit,
-    reset,
-  } = useForm<SavedJob>();
-
-  const onSubmit = async (
-    data: SavedJob
-  ) => {
-    if (!user) return;
-
-    await SavedJobsService.saveJob({
-      ...data,
-      userId: user.uid,
-      createdAt:
-        new Date().toISOString(),
-    });
-
-    reset();
-
-    onSuccess();
-  };
+  if (!jobs || jobs.length === 0) {
+  return (
+    <div className="empty-state">
+      <h3>No Saved Jobs Yet</h3>
+      <p>
+        Save jobs from the Applications page
+        and they will appear here.
+      </p>
+    </div>
+  );
+}
 
   return (
-    <form
-      onSubmit={handleSubmit(
-        onSubmit
-      )}
-      className="saved-job-form"
-    >
-      <input
-        placeholder="Company"
-        {...register("company")}
-      />
+    <div className="saved-jobs-grid">
 
-      <input
-        placeholder="Role"
-        {...register("role")}
-      />
+      {jobs.map((job) => (
 
-      <input
-        placeholder="Location"
-        {...register("location")}
-      />
+        <div
+          key={job.id}
+          className="job-card"
+        >
 
-      <input
-        placeholder="Job URL"
-        {...register("jobUrl")}
-      />
+          <h3>
+            {job.company}
+          </h3>
 
-      <textarea
-        placeholder="Notes"
-        {...register("notes")}
-      />
+          <p>
+            {job.role}
+          </p>
 
-      <button type="submit">
-        Save Job
-      </button>
-    </form>
+          <p>
+            {job.location}
+          </p>
+
+          <a
+            href={job.jobUrl}
+            target="_blank"
+            rel="noreferrer"
+          >
+            View Job
+          </a>
+
+          <button
+            onClick={() =>
+              onDelete(job.id!)
+            }
+          >
+            Remove
+          </button>
+
+        </div>
+
+      ))}
+
+    </div>
   );
 }

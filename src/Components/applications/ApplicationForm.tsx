@@ -155,6 +155,15 @@ export default function ApplicationForm({
           ? "Update Application"
           : "Add Application"}
       </button>
+      <button
+    className="saved-btn btn"
+    onClick={() =>
+      window.location.hash =
+        "#/saved-jobs"
+    }
+  >
+    ⭐ Saved Jobs
+  </button>
     </form>
   </div>
   );

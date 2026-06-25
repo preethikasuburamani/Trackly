@@ -55,3 +55,20 @@
 
   color: white;
 }
+.empty-state {
+  background: white;
+  border-radius: 20px;
+  padding: 60px;
+  text-align: center;
+  margin-top: 30px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+
+  h2 {
+    color: #1e293b;
+    margin-bottom: 10px;
+  }
+
+  p {
+    color: #64748b;
+  }
+}
