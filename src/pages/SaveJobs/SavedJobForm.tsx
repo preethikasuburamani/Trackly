@@ -1,4 +1,5 @@
 import type { SavedJob } from "../../types/savedJob.types";
+import "./SavedJobs.scss";
 
 interface Props {
   jobs: SavedJob[];

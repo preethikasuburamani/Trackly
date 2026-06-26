@@ -4,6 +4,7 @@ import {
   deleteDoc,
   doc,
   getDocs,
+  getDoc,
   query,
   where,
 } from "firebase/firestore";
@@ -14,11 +15,13 @@ class SavedJobsService {
   private collectionName = "savedJobs";
 
   async saveJob(job: any) {
-    return await addDoc(
-      collection(db, this.collectionName),
-      job
-    );
-  }
+  console.log("Saving Job:", job);
+
+  return await addDoc(
+    collection(db, this.collectionName),
+    job
+  );
+}
 
   async getSavedJobs(userId: string) {
     const q = query(
@@ -39,6 +42,17 @@ class SavedJobsService {
       doc(db, this.collectionName, id)
     );
   }
+
+  async getSavedJob(id: string) {
+  const snapshot = await getDoc(
+    doc(db, this.collectionName, id)
+  );
+
+  return {
+    id: snapshot.id,
+    ...snapshot.data(),
+  };
+}
 }
 
 export default new SavedJobsService();
